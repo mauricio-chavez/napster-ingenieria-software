@@ -1,0 +1,3 @@
+# Napster
+
+Django web app
