@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% include '_navbar.html' %}
 <section class="section">
   <div class="container">
-    <h1 class="title">
+    <h1 class="title has-text-white">
       ¡Bienvenido!
     </h1>
-    <p class="subtitle">
-      Disfruta el contenido de <strong>Napster</strong>!
+    <p class="subtitle has-text-light">
+      Disfruta el contenido de <strong class="has-text-white">Napster</strong>!
     </p>
+    <a href="{% url 'music:top_songs' %}" role="button" class="button">Canciones más escuchadas</a>
   </div>
 </section>
 {% endblock content %}

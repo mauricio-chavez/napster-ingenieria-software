@@ -1,0 +1,36 @@
+{% load static %}
+<nav
+  class="navbar is-fixed-bottom is-dark"
+  role="navigation"
+  aria-label="main navigation"
+>
+  <div class="navbar-brand">
+    <a class="navbar-item album-cover" href="{% url 'music:index' %}">
+      <audio src="{% static 'music/25-8.mp3' %}" id="audio"></audio>
+      <img
+        src="{% static 'img/yhlqmdlg.jpg' %}"
+        alt="YHLQMDLG - Bad Bunny"
+        style="max-height: 4rem;"
+      />
+      <div class="container has-text-white song-info">
+        <p class="song-title">25/8</p>
+        <p>Bad Bunny</p>
+        <p>YHLQMDLG</p>
+      </div>
+    </a>
+    <div class="container has-text-white player-buttons" id="player-buttons">
+      <span class="icon is-large" id="step-backward-button">
+        <i class="fas fa-step-backward fa-lg"></i>
+      </span>
+      <span class="icon is-large" id="play-button">
+        <i class="fas fa-play fa-lg"></i>
+      </span>
+      <span class="icon is-large is-hidden" id="pause-button">
+        <i class="fas fa-pause fa-lg"></i>
+      </span>
+      <span class="icon is-large" id="step-forward-button">
+        <i class="fas fa-step-forward fa-lg"></i>
+      </span>
+    </div>
+  </div>
+</nav>

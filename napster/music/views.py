@@ -1,13 +1,13 @@
 """Music app views"""
 
+from django.views.generic import TemplateView
+
 from django.shortcuts import render
 
 
-def index(request):
-    """Welcomes the user"""
-    return render(request, 'music/index.html')
+class IndexView(TemplateView):
+    template_name = 'music/index.html'
 
 
-def top_songs(request):
-    """Shows trending songs"""
-    return render(request, 'music/top-songs.html')
+class TopSongsView(TemplateView):
+    template_name = 'music/top-songs.html'

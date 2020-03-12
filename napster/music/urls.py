@@ -5,6 +5,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('top_songs', views.top_songs, name='top_songs'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('top_songs', views.TopSongsView.as_view(), name='top_songs'),
 ]

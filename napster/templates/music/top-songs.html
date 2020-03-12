@@ -1,18 +1,66 @@
-{% extends 'base.html' %}
-
-
-{% block title %}
+{% extends 'base.html' %} {% load static %} {% block title %}
 <title>Canciones populares</title>
-{% endblock title %}
-  
+{% endblock title %} {% block content %}
 
-{% block content %}
-{% include '_navbar.html' %}
-<section class="section">
-  <div class="container">
-    <h1 class="title">
-      ¡Estas son las canciones del momento!
-    </h1>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-white">
+        ¡Estas son las canciones del momento!
+      </h1>
+      <h2 class="subtitle has-text-white">
+        Ponte cómodo y disfrútalas
+      </h2>
+      <a href="{% url 'music:index' %}" class="button">Volver al inicio</a>
+    </div>
   </div>
+</section>
+
+<section class="section">
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img src="{% static 'img/yhlqmdlg.jpg' %}" />
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="">
+        <p class="song-title has-text-white">Está Cabrón Ser Yo</p>
+        <p class="has-text-white">Bad Bunny, Anuel AA</p>
+        <p class="has-text-white">YHLQMDLG</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img src="{% static 'img/yhlqmdlg.jpg' %}" />
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="">
+        <p class="song-title has-text-white">25/8</p>
+        <p class="has-text-white">Bad Bunny</p>
+        <p class="has-text-white">YHLQMDLG</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img src="{% static 'img/yhlqmdlg.jpg' %}" />
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="">
+        <p class="song-title has-text-white">Safaera</p>
+        <p class="has-text-white">Bad Bunny, Ñengo Flow, Jowell y Randy</p>
+        <p class="has-text-white">YHLQMDLG</p>
+      </div>
+    </div>
+  </article>
+  
 </section>
 {% endblock content %}

@@ -1,0 +1,39 @@
+body {
+  height: 100vh;
+}
+
+.song-info {
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.song-title {
+  font-weight: 900;
+}
+
+.album-cover:hover {
+  background: #363636 !important;
+  cursor: default;
+}
+
+.player-buttons {
+  position: absolute;
+  display: block;
+  width: 152px;
+  left: 45vw;
+  bottom: 15px;
+}
+
+.player-buttons .icon:hover {
+  color: aqua !important;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .player-buttons {
+    left: 68vw;
+  }
+}
