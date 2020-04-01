@@ -1,13 +1,15 @@
 """Music app views"""
 
-from django.views.generic import TemplateView
-
 from django.shortcuts import render
+from django.views.generic import TemplateView, ListView
+
+from .models import Song
 
 
 class IndexView(TemplateView):
     template_name = 'music/index.html'
 
 
-class TopSongsView(TemplateView):
+class TopSongsView(ListView):
+    model = Song
     template_name = 'music/top-songs.html'

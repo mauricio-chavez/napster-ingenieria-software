@@ -1,7 +1,18 @@
-{% extends 'base.html' %} {% load static %} {% block title %}
-<title>Canciones populares</title>
-{% endblock title %} {% block content %}
+{% extends 'base.html' %} 
 
+{% load static %}
+
+
+{% block meta %}
+<link rel="stylesheet" href="{% static 'css/top-songs.css' %}">  
+{% endblock meta %}
+  
+
+{% block title %}
+<title>Canciones populares</title>
+{% endblock title %}
+
+{% block content %}
 <section class="hero">
   <div class="hero-body">
     <div class="container">
@@ -17,50 +28,21 @@
 </section>
 
 <section class="section">
-  <article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="{% static 'img/yhlqmdlg.jpg' %}" />
-      </p>
-    </figure>
-    <div class="media-content">
-      <div class="">
-        <p class="song-title has-text-white">Está Cabrón Ser Yo</p>
-        <p class="has-text-white">Bad Bunny, Anuel AA</p>
-        <p class="has-text-white">YHLQMDLG</p>
+  {% for song in song_list %}
+    <article class="media song" data-url="{{song.file.url}}">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img class="cover" src="{{ song.album.image.url }}" />
+        </p>
+      </figure>
+      <div class="media-content">
+        <div>
+          <p class="song-title has-text-white song-name">{{ song.name }}</p>
+          <p class="has-text-white artist-name">{{ song.album.artist }}</p>
+          <p class="has-text-white album-name">{{ song.album }}</p>
+        </div>
       </div>
-    </div>
-  </article>
-
-  <article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="{% static 'img/yhlqmdlg.jpg' %}" />
-      </p>
-    </figure>
-    <div class="media-content">
-      <div class="">
-        <p class="song-title has-text-white">25/8</p>
-        <p class="has-text-white">Bad Bunny</p>
-        <p class="has-text-white">YHLQMDLG</p>
-      </div>
-    </div>
-  </article>
-
-  <article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="{% static 'img/yhlqmdlg.jpg' %}" />
-      </p>
-    </figure>
-    <div class="media-content">
-      <div class="">
-        <p class="song-title has-text-white">Safaera</p>
-        <p class="has-text-white">Bad Bunny, Ñengo Flow, Jowell y Randy</p>
-        <p class="has-text-white">YHLQMDLG</p>
-      </div>
-    </div>
-  </article>
-  
+    </article>
+  {% endfor %}
 </section>
 {% endblock content %}

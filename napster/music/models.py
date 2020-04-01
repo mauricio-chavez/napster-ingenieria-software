@@ -5,7 +5,7 @@ import os
 from django.db import models
 
 
-def image_filepath(instance, filename):
+def music_model_filepath(instance, filename):
     """Returns a filename for music instance"""
     if instance.__class__.__name__ == 'Artist':
         path = 'artists/images'
@@ -22,8 +22,7 @@ def image_filepath(instance, filename):
 
 class MusicModel(models.Model):
     """Abstract model to create concrete music models"""
-    name = models.CharField(max_length=128)
-    image = models.ImageField(upload_to=image_filepath)
+    name = models.CharField('Nombre', max_length=128)
 
     class Meta:
         abstract = True
@@ -32,20 +31,40 @@ class MusicModel(models.Model):
         return self.name
 
     def extension(self):
-        _, ext = os.path.splitext(self.image.name)
+        if self.__class__.__name__ == 'Song':
+            _, ext = os.path.splitext(self.file.name)
+        else:
+            _, ext = os.path.splitext(self.image.name)
         return ext
 
 
 class Artist(MusicModel):
     """Artist model with an image"""
-    pass
+    image = models.ImageField('Imagen', upload_to=music_model_filepath)
+
+    class Meta:
+        verbose_name = 'Artista'
 
 
 class Album(MusicModel):
     """Album model with a image and an artist"""
-    artist = models.ForeignKey(to=Artist, on_delete=models.CASCADE)
+    image = models.ImageField('Imagen', upload_to=music_model_filepath)
+    artist = models.ForeignKey(
+        verbose_name='Artista',
+        to=Artist,
+        on_delete=models.CASCADE
+    )
 
 
 class Song(MusicModel):
     """Song model with a album and a image"""
-    album = models.ForeignKey(to=Album, on_delete=models.CASCADE)
+    file = models.FileField('Archivo', upload_to=music_model_filepath)
+    album = models.ForeignKey(
+        verbose_name='Álbum',
+        to=Album,
+        on_delete=models.CASCADE
+    )
+
+    class Meta:
+        verbose_name = 'Canción'
+        verbose_name_plural = 'Canciones'
